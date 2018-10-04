@@ -25,6 +25,14 @@ As an illustration, if the account number is 49927398716, it will be validated a
 
 For the sake of stating the obvious, __please do not use your own credit cards in any of the tests__.
 
+## Things that we value
+The code that you produce will be reviewed by a number of senior (seasoned) engineers.  Things we value include:
+ - simple, elegant code that reads like a narrative
+ - thinking about the code more than the writing of the code (we spend a lot of time thinking/debating about what we are writing)
+ - transparency and feedback to support continuous learning
+ - excellent testing that acts as documentation
+ - challenging boundaries and norms where necessary ... do not accept the status quo
+
 ## Approach
 This repository contains a skeletal solution including an interface, exception and empty test class which you may use if you wish.  If you prefer not to use Java, that's fine: any programming / scripting language is acceptable.  If you are not familiar with any programming / scripting language then please use pseudo-code.
 
@@ -34,14 +42,6 @@ To submit your solution, please:
 1. make changes as you see fit then commit and push those changes to your fork
 1. grant read access for your fork to the `***REMOVED*** Code Reviewers` group
 1. email the URL of your fork along with any preamble you desire to `***REMOVED***`
-
-## Things that we value
-The code that you produce will be reviewed by a number of senior (seasoned) engineers.  Things we value include:
- - simple, elegant code that reads like a narrative
- - thinking about the code more than the writing of the code (we spend a lot of time thinking/debating about what we are writing)
- - transparency and feedback to support continuous learning
- - excellent testing that acts as documentation
- - challenging boundaries and norms where necessary ... do not accept the status quo
 
 ## Importing into your IDE
 We are assuming that you will not have Gradle installed so this repository uses gradle wrapper scripts.  If you wish to
