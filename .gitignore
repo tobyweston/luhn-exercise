@@ -1,0 +1,11 @@
+build/
+classes/
+bin/
+.settings/
+.gradle/
+.idea/
+*.iml
+*.tar
+*.tar.gz
+.classpath
+.project
