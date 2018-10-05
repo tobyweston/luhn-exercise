@@ -41,7 +41,9 @@ To submit your solution, please:
 1. create a fork this repository
 1. make changes as you see fit then commit and push those changes to your fork
 1. grant read access for your fork to the `***REMOVED*** Code Reviewers` group
-1. email the URL of your fork along with any preamble you desire to `***REMOVED***`
+1. email the URL of your fork along with any preamble you desire, and an indication of the time you spent on it, to `***REMOVED***`
+
+Note: you should spend no more than a couple of hours on this effort.
 
 ## Importing into your IDE
 We are assuming that you will not have Gradle installed so this repository uses gradle wrapper scripts.  If you wish to
