@@ -6,21 +6,7 @@ version = '1.0.0'
 group = 'org.acmebank.interviews.luhn'
 
 repositories {
-    maven {
-        credentials {
-            username "$artifactoryUsername"
-            password "$artifactoryPassword"
-        }
-        url "${artifactory_libs}"
-    }
-
-    jcenter {
-        credentials {
-            username "$artifactoryUsername"
-            password "$artifactoryPassword"
-        }
-        url "${artifactory_libs}"
-    }
+    mavenCentral()
 }
 
 dependencies {
