@@ -27,4 +27,13 @@ public class FunctionsTest {
         assertThat(Functions.separate(4321L), is(asList(4, 3, 2, 1)));
     }
 
+    @Test
+    public void sumIndividualDigits() {
+        assertThat(Functions.sum(asList()), is(0));
+        assertThat(Functions.sum(asList(0)), is(0));
+        assertThat(Functions.sum(asList(1, 0)), is(1));
+        assertThat(Functions.sum(asList(1, 2)), is(3));
+        assertThat(Functions.sum(asList(1, 2, 4)), is(7));
+        assertThat(Functions.sum(asList(10, 2, 4)), is(16));
+    }
 }

@@ -38,4 +38,7 @@ public class Functions {
                 .collect(toList());
     }
 
+    public static Integer sum(List<Integer> list) {
+        return list.stream().mapToInt(Integer::intValue).sum();
+    }
 }

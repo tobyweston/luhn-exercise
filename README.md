@@ -17,10 +17,20 @@ according to the Luhn formula; else it is not valid.
 ### Example
 As an illustration, if the account number is 49927398716, it will be validated as follows:
 
-1. Double every second digit, from the rightmost digit:  
-    `(1*2) = 2, (8*2) = 16, (3*2) = 6, (2*2) = 4, (9*2) = 18`
+1. Double every second digit, from the rightmost digit:      
+    
+    ```
+    account number   :   4  9  9  2  7  3  9  8  7  1  6 
+    double every 2nd :     18     4     6    16     2      
+    ```
+    
 2. Sum all digits (digits in parentheses are the products from Step 1):  
+
+    ```
+    sum of digits    :   4  9  9  4  7  6  9  7  7  2  6      
+    ```
     `6 + (2) + 7 + (1 + 6) + 9 + (6) + 7 + (4) + 9 + (1 + 8) + 4 = 70`
+    
 3. Take the sum modulo 10: 70 mod 10 = 0; the account number is valid.
 
 For the sake of stating the obvious, __please do not use your own credit cards in any of the tests__.
