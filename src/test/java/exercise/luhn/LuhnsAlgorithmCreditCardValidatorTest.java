@@ -4,8 +4,11 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import java.util.concurrent.Callable;
+
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
 
 public class LuhnsAlgorithmCreditCardValidatorTest {
 
@@ -20,10 +23,26 @@ public class LuhnsAlgorithmCreditCardValidatorTest {
 	}
 
 	@Test
-	public void invalidCreditCardNumbers() throws Exception {
+	public void creditCardNumbersContainingNonNumerics() throws Exception {
 		exception.expect(CreditCardNumberValidationException.class);
 		exception.expectMessage("Credit card numbers must contain only numbers");
-		assertThat(validator.validate("4992739871x"), is(true));
+		validator.validate("4992739871x");
 	}
 
+	@Test
+	public void creditCardNumbersAreIncorrectLength() throws Exception {
+		assertThrows(() -> validator.validate(""), "Credit card numbers must contain 16 digits");
+		assertThrows(() -> validator.validate("1"), "Credit card numbers must contain 16 digits");
+		assertThrows(() -> validator.validate("x"), "Credit card numbers must contain 16 digits");
+		assertThrows(() -> validator.validate("499273987161"), "Credit card numbers must contain 16 digits");
+	}
+
+	private <V> void assertThrows(Callable<V> function, String expectedMessage) throws Exception {
+		try {
+			function.call();
+			fail("Expected exception to be raised");
+		} catch (CreditCardNumberValidationException e) {
+			assertThat(e.getMessage(), is(expectedMessage));
+		}
+	}
 }
