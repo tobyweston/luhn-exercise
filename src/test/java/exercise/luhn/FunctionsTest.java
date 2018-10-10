@@ -1,5 +1,6 @@
 package exercise.luhn;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static exercise.luhn.LuhnsAlgorithmCreditCardValidator.Functions.*;
