@@ -1,6 +1,6 @@
 defaultTasks 'clean', 'build'
 
-apply plugin: 'java'
+apply plugin: 'scala'
 
 version = '1.0.0'
 group = 'org.acmebank.interviews.luhn'
@@ -10,5 +10,6 @@ repositories {
 }
 
 dependencies {
+    compile 'org.scala-lang:scala-library:2.12.4'
     testCompile 'junit:junit:4.12'
 }
