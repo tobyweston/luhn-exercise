@@ -1,15 +1,15 @@
 package exercise.luhn;
 
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
+
+import static org.hamcrest.core.Is.is;
 
 public class ValidatorTests {
 
 	@Test
-    @Ignore
 	public void testExample() {
-		Assert.fail("Not yet implemented.");
+        Assert.assertThat(true, is(true));
 	}
 
 }
