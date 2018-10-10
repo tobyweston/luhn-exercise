@@ -36,4 +36,22 @@ public class FunctionsTest {
         assertThat(Functions.sum(asList(1, 2, 4)), is(7));
         assertThat(Functions.sum(asList(10, 2, 4)), is(16));
     }
+
+    @Test
+    public void isANumberDivisibleByTenExactly() {
+        assertThat(Functions.isDivisibleByTenExactly(0), is(true));
+        assertThat(Functions.isDivisibleByTenExactly(1), is(false));
+        assertThat(Functions.isDivisibleByTenExactly(2), is(false));
+        assertThat(Functions.isDivisibleByTenExactly(3), is(false));
+        assertThat(Functions.isDivisibleByTenExactly(5), is(false));
+        assertThat(Functions.isDivisibleByTenExactly(10), is(true));
+        assertThat(Functions.isDivisibleByTenExactly(11), is(false));
+        assertThat(Functions.isDivisibleByTenExactly(20), is(true));
+    }
+
+    @Test
+    public void isANegativeNumberDivisibleByTenExactly() {
+        assertThat(Functions.isDivisibleByTenExactly(-10), is(false));
+        assertThat(Functions.isDivisibleByTenExactly(-1), is(false));
+    }
 }

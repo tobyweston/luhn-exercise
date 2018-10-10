@@ -41,4 +41,10 @@ public class Functions {
     public static Integer sum(List<Integer> list) {
         return list.stream().mapToInt(Integer::intValue).sum();
     }
+
+
+    public static Boolean isDivisibleByTenExactly(Integer dividend) {
+        if (dividend < 0) return false;
+        return dividend % 10 == 0;
+    }
 }
