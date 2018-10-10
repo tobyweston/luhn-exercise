@@ -5,11 +5,11 @@ import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
 
-public class ValidatorTests {
+public class LuhnsAlgorithmCreditCardValidatorTest {
 
 	@Test
 	public void testExample() throws CreditCardNumberValidationException {
-        CreditCardNumberValidatorImpl validator = new CreditCardNumberValidatorImpl();
+        CreditCardNumberValidator validator = new LuhnsAlgorithmCreditCardValidator();
         Assert.assertThat(validator.validate("XXXXX"), is(true));
 	}
 
