@@ -30,12 +30,13 @@ public class FunctionsTest {
 
     @Test
     public void sumIndividualDigits() {
-        assertThat(sum(asList()), is(0));
-        assertThat(sum(asList(0)), is(0));
-        assertThat(sum(asList(1, 0)), is(1));
-        assertThat(sum(asList(1, 2)), is(3));
-        assertThat(sum(asList(1, 2, 4)), is(7));
-        assertThat(sum(asList(10, 2, 4)), is(16));
+        assertThat(sumOfSingleDigits(asList()), is(0));
+        assertThat(sumOfSingleDigits(asList(0)), is(0));
+        assertThat(sumOfSingleDigits(asList(1, 0)), is(1));
+        assertThat(sumOfSingleDigits(asList(1, 2)), is(3));
+        assertThat(sumOfSingleDigits(asList(1, 2, 4)), is(7));
+        assertThat(sumOfSingleDigits(asList(10, 2, 4)), is(7));
+        assertThat(sumOfSingleDigits(asList(10, 12, 24)), is(10));
     }
 
     @Test

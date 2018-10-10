@@ -38,8 +38,11 @@ public class Functions {
                 .collect(toList());
     }
 
-    public static Integer sum(List<Integer> list) {
-        return list.stream().mapToInt(Integer::intValue).sum();
+    public static Integer sumOfSingleDigits(List<Integer> list) {
+        return list
+                .stream()
+                .flatMapToInt(x -> separate(Integer.toUnsignedLong(x)).stream().mapToInt(Integer::intValue))
+                .sum();
     }
 
 
