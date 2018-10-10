@@ -8,8 +8,9 @@ import static org.hamcrest.core.Is.is;
 public class ValidatorTests {
 
 	@Test
-	public void testExample() {
-        Assert.assertThat(true, is(true));
+	public void testExample() throws CreditCardNumberValidationException {
+        CreditCardNumberValidatorImpl validator = new CreditCardNumberValidatorImpl();
+        Assert.assertThat(validator.validate("XXXXX"), is(true));
 	}
 
 }

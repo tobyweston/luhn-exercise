@@ -3,8 +3,7 @@ package exercise.luhn;
 
 public class CreditCardNumberValidatorImpl implements CreditCardNumberValidator {
 
-	public void validate(String number) throws CreditCardNumberValidationException {
-		// Implement this method
-		throw new UnsupportedOperationException(); 
+	public Boolean validate(String number) throws CreditCardNumberValidationException {
+		return true;
 	}
 }
