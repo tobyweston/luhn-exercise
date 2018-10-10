@@ -2,6 +2,7 @@ package exercise.luhn;
 
 import org.junit.Test;
 
+import static exercise.luhn.Functions.*;
 import static exercise.luhn.Functions.doubleEverySecondDigitReverseOrder;
 import static java.util.Arrays.*;
 import static org.hamcrest.CoreMatchers.is;
@@ -21,37 +22,37 @@ public class FunctionsTest {
 
     @Test
     public void separateANumber() {
-        assertThat(Functions.separate(1L), is(asList(1)));
-        assertThat(Functions.separate(21L), is(asList(2, 1)));
-        assertThat(Functions.separate(321L), is(asList(3, 2, 1)));
-        assertThat(Functions.separate(4321L), is(asList(4, 3, 2, 1)));
+        assertThat(separate(1L), is(asList(1)));
+        assertThat(separate(21L), is(asList(2, 1)));
+        assertThat(separate(321L), is(asList(3, 2, 1)));
+        assertThat(separate(4321L), is(asList(4, 3, 2, 1)));
     }
 
     @Test
     public void sumIndividualDigits() {
-        assertThat(Functions.sum(asList()), is(0));
-        assertThat(Functions.sum(asList(0)), is(0));
-        assertThat(Functions.sum(asList(1, 0)), is(1));
-        assertThat(Functions.sum(asList(1, 2)), is(3));
-        assertThat(Functions.sum(asList(1, 2, 4)), is(7));
-        assertThat(Functions.sum(asList(10, 2, 4)), is(16));
+        assertThat(sum(asList()), is(0));
+        assertThat(sum(asList(0)), is(0));
+        assertThat(sum(asList(1, 0)), is(1));
+        assertThat(sum(asList(1, 2)), is(3));
+        assertThat(sum(asList(1, 2, 4)), is(7));
+        assertThat(sum(asList(10, 2, 4)), is(16));
     }
 
     @Test
     public void isANumberDivisibleByTenExactly() {
-        assertThat(Functions.isDivisibleByTenExactly(0), is(true));
-        assertThat(Functions.isDivisibleByTenExactly(1), is(false));
-        assertThat(Functions.isDivisibleByTenExactly(2), is(false));
-        assertThat(Functions.isDivisibleByTenExactly(3), is(false));
-        assertThat(Functions.isDivisibleByTenExactly(5), is(false));
-        assertThat(Functions.isDivisibleByTenExactly(10), is(true));
-        assertThat(Functions.isDivisibleByTenExactly(11), is(false));
-        assertThat(Functions.isDivisibleByTenExactly(20), is(true));
+        assertThat(isDivisibleByTenExactly(0), is(true));
+        assertThat(isDivisibleByTenExactly(1), is(false));
+        assertThat(isDivisibleByTenExactly(2), is(false));
+        assertThat(isDivisibleByTenExactly(3), is(false));
+        assertThat(isDivisibleByTenExactly(5), is(false));
+        assertThat(isDivisibleByTenExactly(10), is(true));
+        assertThat(isDivisibleByTenExactly(11), is(false));
+        assertThat(isDivisibleByTenExactly(20), is(true));
     }
 
     @Test
     public void isANegativeNumberDivisibleByTenExactly() {
-        assertThat(Functions.isDivisibleByTenExactly(-10), is(false));
-        assertThat(Functions.isDivisibleByTenExactly(-1), is(false));
+        assertThat(isDivisibleByTenExactly(-10), is(false));
+        assertThat(isDivisibleByTenExactly(-1), is(false));
     }
 }
