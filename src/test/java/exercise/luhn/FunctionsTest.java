@@ -2,8 +2,8 @@ package exercise.luhn;
 
 import org.junit.Test;
 
-import static exercise.luhn.Functions.*;
-import static exercise.luhn.Functions.doubleEverySecondDigitReverseOrder;
+import static exercise.luhn.LuhnsAlgorithmCreditCardValidator.Functions.*;
+import static exercise.luhn.LuhnsAlgorithmCreditCardValidator.Functions.doubleEverySecondDigitReverseOrder;
 import static java.util.Arrays.*;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;

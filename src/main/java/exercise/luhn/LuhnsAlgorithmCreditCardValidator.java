@@ -2,8 +2,12 @@ package exercise.luhn;
 
 
 import java.util.List;
+import java.util.function.IntUnaryOperator;
+import java.util.stream.IntStream;
 
-import static exercise.luhn.Functions.*;
+import static exercise.luhn.LuhnsAlgorithmCreditCardValidator.Functions.*;
+import static java.util.Collections.reverse;
+import static java.util.stream.Collectors.toList;
 
 public class LuhnsAlgorithmCreditCardValidator implements CreditCardNumberValidator {
 
@@ -19,6 +23,45 @@ public class LuhnsAlgorithmCreditCardValidator implements CreditCardNumberValida
 			return Long.parseLong(number);
 		} catch (NumberFormatException e) {
 			throw new CreditCardNumberValidationException("Credit card numbers must contain only numbers");
+		}
+	}
+
+
+	static class Functions {
+
+		static List<Integer> doubleEverySecondDigitReverseOrder(Long number) {
+			List<Integer> values = separate(number);
+			reverse(values);
+			List<Integer> doubled = IntStream
+					.range(0, values.size())
+					.map(index -> index % 2 == 0 ? values.get(index) : values.get(index) * 2)
+					.boxed()
+					.collect(toList());
+			reverse(doubled);
+			return doubled;
+		}
+
+		static List<Integer> separate(Long number) {
+			IntUnaryOperator toInteger = c -> Integer.parseInt(String.valueOf((char) c));
+
+			return number.toString()
+					.chars()
+					.map(toInteger)
+					.boxed()
+					.collect(toList());
+		}
+
+		static Integer sumOfSingleDigits(List<Integer> list) {
+			return list
+					.stream()
+					.flatMapToInt(x -> separate(Integer.toUnsignedLong(x)).stream().mapToInt(Integer::intValue))
+					.sum();
+		}
+
+
+		static Boolean isDivisibleByTenExactly(Integer dividend) {
+			if (dividend < 0) return false;
+			return dividend % 10 == 0;
 		}
 	}
 }
