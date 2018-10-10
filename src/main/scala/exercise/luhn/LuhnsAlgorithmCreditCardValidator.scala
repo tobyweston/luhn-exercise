@@ -6,3 +6,11 @@ class LuhnsAlgorithmCreditCardValidator extends CreditCardNumberValidator {
     throw new UnsupportedOperationException
   }
 }
+
+object LuhnsAlgorithmCreditCardValidator {
+
+  def separate(number: Long): List[Int] = {
+    number.toString.map(_.asDigit).toList
+  }
+
+}
