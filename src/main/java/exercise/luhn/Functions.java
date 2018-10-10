@@ -1,9 +1,12 @@
 package exercise.luhn;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.Function;
 import java.util.function.IntUnaryOperator;
+import java.util.function.Supplier;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
@@ -26,9 +29,11 @@ public class Functions {
     }
 
     public static List<Integer> separate(Long number) {
+        IntUnaryOperator toInteger = c -> Integer.parseInt(String.valueOf((char) c));
+
         return number.toString()
                 .chars()
-                .map(c -> Integer.parseInt(String.valueOf((char) c)))
+                .map(toInteger)
                 .boxed()
                 .collect(toList());
     }
