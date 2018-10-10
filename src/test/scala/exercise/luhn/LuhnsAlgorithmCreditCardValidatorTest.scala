@@ -4,7 +4,7 @@ import org.junit.Assert
 import org.junit.Ignore
 import org.junit.Test
 
-class ValidatorTests {
+class LuhnsAlgorithmCreditCardValidatorTest {
 
   @Test
   def testExample(): Unit = {
