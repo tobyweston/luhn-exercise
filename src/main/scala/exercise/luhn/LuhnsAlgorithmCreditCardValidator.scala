@@ -1,9 +1,13 @@
 package exercise.luhn
 
+import exercise.luhn.LuhnsAlgorithmCreditCardValidator._
+
 class LuhnsAlgorithmCreditCardValidator extends CreditCardNumberValidator {
 
-  def validate(number: String): Unit = { // Implement this method
-    throw new UnsupportedOperationException
+  def validate(number: String) = {
+    val doubled = reverseAndDoubleEverySecondDigit(number.toLong)
+    val sum = sumOfDigits(doubled)
+    isDivisibleByTenExactly(sum)
   }
 }
 

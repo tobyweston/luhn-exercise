@@ -1,6 +1,6 @@
 package exercise.luhn
 
-import exercise.luhn.LuhnsAlgorithmCreditCardValidator.{reverseAndDoubleEverySecondDigit, separateDigits, sumOfDigits, isDivisibleByTenExactly}
+import exercise.luhn.LuhnsAlgorithmCreditCardValidator.{isDivisibleByTenExactly, reverseAndDoubleEverySecondDigit, separateDigits, sumOfDigits}
 import org.hamcrest.CoreMatchers.is
 import org.junit.Assert.assertThat
 import org.junit.Test
@@ -48,4 +48,17 @@ class LuhnsAlgorithmCreditCardValidatorTest {
     assertThat(isDivisibleByTenExactly(-10), is(false))
     assertThat(isDivisibleByTenExactly(-1), is(false))
   }
+
+  @Test def validCreditCardNumbersCanBeVerified(): Unit = {
+    val validator = new LuhnsAlgorithmCreditCardValidator
+    assertThat(validator.validate("49927398716"), is(true))
+    assertThat(validator.validate("79927398713"), is(true))
+  }
+
+  @Test def invalidCardNumbers(): Unit = {
+    val validator = new LuhnsAlgorithmCreditCardValidator
+    assertThat(validator.validate("49927398711"), is(false))
+    assertThat(validator.validate("79927398711"), is(false))
+  }
+
 }
