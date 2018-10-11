@@ -8,7 +8,7 @@ class LuhnsAlgorithmCreditCardValidator extends CreditCardNumberValidator {
 }
 
 object LuhnsAlgorithmCreditCardValidator {
-  def doubleEverySecondDigitReverseOrder(number: Long): List[Int] = {
+  def reverseAndDoubleEverySecondDigit(number: Long): List[Int] = {
     separate(number)
       .reverse
       .zipWithIndex
@@ -16,7 +16,6 @@ object LuhnsAlgorithmCreditCardValidator {
         case (value, index) if index % 2 == 0 => value
         case (value, _)                       => value * 2
       }
-      .reverse
   }
 
   def separate(number: Long): List[Int] = {
