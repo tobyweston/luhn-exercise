@@ -50,8 +50,8 @@ public class LuhnsAlgorithmCreditCardValidator implements CreditCardNumberValida
 					.collect(toList());
 		}
 
-		static Integer sumOfDigits(List<Integer> list) {
-			return list
+		static Integer sumOfDigits(List<Integer> digits) {
+			return digits
 					.stream()
 					.flatMapToInt(x -> separateDigits(Integer.toUnsignedLong(x)).stream().mapToInt(Integer::intValue))
 					.sum();
