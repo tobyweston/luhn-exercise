@@ -2,7 +2,6 @@ package exercise.luhn;
 
 
 import java.util.List;
-import java.util.function.IntUnaryOperator;
 import java.util.stream.IntStream;
 
 import static exercise.luhn.LuhnsAlgorithmCreditCardValidator.Functions.*;
@@ -34,18 +33,20 @@ public class LuhnsAlgorithmCreditCardValidator implements CreditCardNumberValida
 			reverse(values);
 			List<Integer> doubled = IntStream
 					.range(0, values.size())
-					.map(index -> index % 2 == 0 ? values.get(index) : values.get(index) * 2)
+					.map(index -> isEven(index) ? values.get(index) : values.get(index) * 2)
 					.boxed()
 					.collect(toList());
 			return doubled;
 		}
 
-		static List<Integer> separateDigits(Long number) {
-			IntUnaryOperator toInteger = c -> Integer.parseInt(String.valueOf((char) c));
+        private static boolean isEven(int index) {
+            return index % 2 == 0;
+        }
 
-			return number.toString()
+        static List<Integer> separateDigits(Long number) {
+            return number.toString()
 					.chars()
-					.map(toInteger)
+					.map(Character::getNumericValue)
 					.boxed()
 					.collect(toList());
 		}
