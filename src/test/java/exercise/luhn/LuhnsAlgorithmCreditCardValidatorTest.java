@@ -28,7 +28,13 @@ public class LuhnsAlgorithmCreditCardValidatorTest {
 		assertThat(validator.validate("79927398711"), is(false));
 	}
 
-	@Test
+    @Test
+    public void handleSpaces() throws Exception {
+        assertThat(validator.validate("7 9 9 2  7 3 9 8   7 1 1"), is(false));
+        assertThat(validator.validate("7 9 9 2 7 3 9 8 7 1  3 "), is(true));
+    }
+
+    @Test
 	public void creditCardNumbersContainingNonNumerics() throws Exception {
 		exception.expect(CreditCardNumberValidationException.class);
 		exception.expectMessage("Credit card numbers must contain only numbers");
