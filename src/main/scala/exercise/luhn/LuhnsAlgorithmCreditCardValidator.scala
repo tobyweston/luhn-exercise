@@ -2,12 +2,16 @@ package exercise.luhn
 
 import exercise.luhn.LuhnsAlgorithmCreditCardValidator._
 
+import scala.util.Try
+
 class LuhnsAlgorithmCreditCardValidator extends CreditCardNumberValidator {
 
-  def validate(number: String) = {
-    val doubled = reverseAndDoubleEverySecondDigit(number.toLong)
-    val sum = sumOfDigits(doubled)
-    isDivisibleByTenExactly(sum)
+  def validate(number: String): Either[ValidationError, Boolean] = {
+    for {
+      candidate <- Try(number.toLong).toEither.left.map(toError)
+      doubled   <- Right(reverseAndDoubleEverySecondDigit(candidate))
+      sum       <- Right(sumOfDigits(doubled))
+    } yield isDivisibleByTenExactly(sum)
   }
 }
 
@@ -32,7 +36,10 @@ object LuhnsAlgorithmCreditCardValidator {
 
   def isDivisibleByTenExactly(dividend: Int) = {
     if (dividend < 0) false else dividend % 10 == 0
+  }
 
+  private val toError: Throwable => ValidationError = {
+    case _: NumberFormatException => ValidationError("Credit card numbers must contain only numbers")
   }
 
 }

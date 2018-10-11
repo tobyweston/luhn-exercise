@@ -51,14 +51,22 @@ class LuhnsAlgorithmCreditCardValidatorTest {
 
   @Test def validCreditCardNumbersCanBeVerified(): Unit = {
     val validator = new LuhnsAlgorithmCreditCardValidator
-    assertThat(validator.validate("49927398716"), is(true))
-    assertThat(validator.validate("79927398713"), is(true))
+    assertThat(validator.validate("49927398716"), is(toRight[ValidationError](true)))
+    assertThat(validator.validate("79927398713"), is(toRight[ValidationError](true)))
   }
 
   @Test def invalidCardNumbers(): Unit = {
     val validator = new LuhnsAlgorithmCreditCardValidator
-    assertThat(validator.validate("49927398711"), is(false))
-    assertThat(validator.validate("79927398711"), is(false))
+    assertThat(validator.validate("49927398711"), is(toRight[ValidationError](false)))
+    assertThat(validator.validate("79927398711"), is(toRight[ValidationError](false)))
   }
 
+  @Test def creditCardNumbersContainingNonNumerics(): Unit = {
+    val validator = new LuhnsAlgorithmCreditCardValidator
+    assertThat(validator.validate("4992739871x"), is(toLeft[Boolean](ValidationError("Credit card numbers must contain only numbers"))))
+  }
+
+
+  def toRight[A](boolean: Boolean): Either[A, Boolean] = Right(boolean)
+  def toLeft[B](error: ValidationError): Either[ValidationError, B] = Left(error)
 }
