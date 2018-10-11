@@ -13,7 +13,7 @@ public class LuhnsAlgorithmCreditCardValidator implements CreditCardNumberValida
 
 	public Boolean validate(String number) throws CreditCardNumberValidationException {
 		List<Integer> doubled = reverseAndDoubleEverySecondDigit(toLong(number));
-		int sumOfDigits = sumOfSingleDigits(doubled);
+		int sumOfDigits = sumOfDigits(doubled);
 		return isDivisibleByTenExactly(sumOfDigits);
 	}
 
@@ -30,7 +30,7 @@ public class LuhnsAlgorithmCreditCardValidator implements CreditCardNumberValida
 	static class Functions {
 
 		static List<Integer> reverseAndDoubleEverySecondDigit(Long number) {
-			List<Integer> values = separate(number);
+			List<Integer> values = separateDigits(number);
 			reverse(values);
 			List<Integer> doubled = IntStream
 					.range(0, values.size())
@@ -40,7 +40,7 @@ public class LuhnsAlgorithmCreditCardValidator implements CreditCardNumberValida
 			return doubled;
 		}
 
-		static List<Integer> separate(Long number) {
+		static List<Integer> separateDigits(Long number) {
 			IntUnaryOperator toInteger = c -> Integer.parseInt(String.valueOf((char) c));
 
 			return number.toString()
@@ -50,10 +50,10 @@ public class LuhnsAlgorithmCreditCardValidator implements CreditCardNumberValida
 					.collect(toList());
 		}
 
-		static Integer sumOfSingleDigits(List<Integer> list) {
+		static Integer sumOfDigits(List<Integer> list) {
 			return list
 					.stream()
-					.flatMapToInt(x -> separate(Integer.toUnsignedLong(x)).stream().mapToInt(Integer::intValue))
+					.flatMapToInt(x -> separateDigits(Integer.toUnsignedLong(x)).stream().mapToInt(Integer::intValue))
 					.sum();
 		}
 

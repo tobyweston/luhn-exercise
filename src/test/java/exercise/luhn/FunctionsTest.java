@@ -20,22 +20,22 @@ public class FunctionsTest {
     }
 
     @Test
-    public void separateANumber() {
-        assertThat(separate(1L), is(asList(1)));
-        assertThat(separate(21L), is(asList(2, 1)));
-        assertThat(separate(321L), is(asList(3, 2, 1)));
-        assertThat(separate(4321L), is(asList(4, 3, 2, 1)));
+    public void separateIntoDigits() {
+        assertThat(separateDigits(1L), is(asList(1)));
+        assertThat(separateDigits(21L), is(asList(2, 1)));
+        assertThat(separateDigits(321L), is(asList(3, 2, 1)));
+        assertThat(separateDigits(4321L), is(asList(4, 3, 2, 1)));
     }
 
     @Test
     public void sumIndividualDigits() {
-        assertThat(sumOfSingleDigits(asList()), is(0));
-        assertThat(sumOfSingleDigits(asList(0)), is(0));
-        assertThat(sumOfSingleDigits(asList(1, 0)), is(1));
-        assertThat(sumOfSingleDigits(asList(1, 2)), is(3));
-        assertThat(sumOfSingleDigits(asList(1, 2, 4)), is(7));
-        assertThat(sumOfSingleDigits(asList(10, 2, 4)), is(7));
-        assertThat(sumOfSingleDigits(asList(10, 12, 24)), is(10));
+        assertThat(sumOfDigits(asList()), is(0));
+        assertThat(sumOfDigits(asList(0)), is(0));
+        assertThat(sumOfDigits(asList(1, 0)), is(1));
+        assertThat(sumOfDigits(asList(1, 2)), is(3));
+        assertThat(sumOfDigits(asList(1, 2, 4)), is(7));
+        assertThat(sumOfDigits(asList(10, 2, 4)), is(7));
+        assertThat(sumOfDigits(asList(10, 12, 24)), is(10));
     }
 
     @Test
