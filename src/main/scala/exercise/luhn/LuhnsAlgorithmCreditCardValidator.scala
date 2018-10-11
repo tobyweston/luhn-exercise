@@ -22,4 +22,8 @@ object LuhnsAlgorithmCreditCardValidator {
     number.toString.map(_.asDigit).toList
   }
 
+  def sumOfDigits(digits: List[Int]) = {
+    if (digits.isEmpty) 0 else separateDigits(digits.mkString.toLong).sum
+  }
+
 }

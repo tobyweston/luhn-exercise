@@ -1,6 +1,6 @@
 package exercise.luhn
 
-import exercise.luhn.LuhnsAlgorithmCreditCardValidator.{reverseAndDoubleEverySecondDigit, separateDigits}
+import exercise.luhn.LuhnsAlgorithmCreditCardValidator.{reverseAndDoubleEverySecondDigit, separateDigits, sumOfDigits}
 import org.hamcrest.CoreMatchers.is
 import org.junit.Assert.assertThat
 import org.junit.Test
@@ -21,6 +21,16 @@ class LuhnsAlgorithmCreditCardValidatorTest {
     assertThat(separateDigits(21L), is(List(2, 1)))
     assertThat(separateDigits(321L), is(List(3, 2, 1)))
     assertThat(separateDigits(4321L), is(List(4, 3, 2, 1)))
+  }
+
+  @Test def sumIndividualDigits(): Unit = {
+    assertThat(sumOfDigits(List()), is(0))
+    assertThat(sumOfDigits(List(0)), is(0))
+    assertThat(sumOfDigits(List(1, 0)), is(1))
+    assertThat(sumOfDigits(List(1, 2)), is(3))
+    assertThat(sumOfDigits(List(1, 2, 4)), is(7))
+    assertThat(sumOfDigits(List(10, 2, 4)), is(7))
+    assertThat(sumOfDigits(List(10, 12, 24)), is(10))
   }
 
 }
