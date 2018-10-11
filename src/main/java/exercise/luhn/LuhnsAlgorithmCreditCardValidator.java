@@ -12,7 +12,7 @@ import static java.util.stream.Collectors.toList;
 public class LuhnsAlgorithmCreditCardValidator implements CreditCardNumberValidator {
 
 	public Boolean validate(String number) throws CreditCardNumberValidationException {
-		List<Integer> doubled = doubleEverySecondDigitReverseOrder(toLong(number));
+		List<Integer> doubled = reverseAndDoubleEverySecondDigit(toLong(number));
 		int sumOfDigits = sumOfSingleDigits(doubled);
 		return isDivisibleByTenExactly(sumOfDigits);
 	}
@@ -29,7 +29,7 @@ public class LuhnsAlgorithmCreditCardValidator implements CreditCardNumberValida
 
 	static class Functions {
 
-		static List<Integer> doubleEverySecondDigitReverseOrder(Long number) {
+		static List<Integer> reverseAndDoubleEverySecondDigit(Long number) {
 			List<Integer> values = separate(number);
 			reverse(values);
 			List<Integer> doubled = IntStream
@@ -37,7 +37,6 @@ public class LuhnsAlgorithmCreditCardValidator implements CreditCardNumberValida
 					.map(index -> index % 2 == 0 ? values.get(index) : values.get(index) * 2)
 					.boxed()
 					.collect(toList());
-			reverse(doubled);
 			return doubled;
 		}
 
