@@ -19,7 +19,7 @@ public class LuhnsAlgorithmCreditCardValidator implements CreditCardNumberValida
 
 	private long toLong(String number) throws CreditCardNumberValidationException {
 		try {
-			if (number.length() != 11) throw new CreditCardNumberValidationException("Credit card numbers must contain 16 digits");
+			if (number.length() != 11) throw new CreditCardNumberValidationException("Credit card numbers must contain 11 digits");
 			return Long.parseLong(number);
 		} catch (NumberFormatException e) {
 			throw new CreditCardNumberValidationException("Credit card numbers must contain only numbers");

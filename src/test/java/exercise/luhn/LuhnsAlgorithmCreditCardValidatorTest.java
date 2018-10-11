@@ -37,10 +37,10 @@ public class LuhnsAlgorithmCreditCardValidatorTest {
 
 	@Test
 	public void creditCardNumbersAreIncorrectLength() throws Exception {
-		assertThrows(() -> validator.validate(""), "Credit card numbers must contain 16 digits");
-		assertThrows(() -> validator.validate("1"), "Credit card numbers must contain 16 digits");
-		assertThrows(() -> validator.validate("x"), "Credit card numbers must contain 16 digits");
-		assertThrows(() -> validator.validate("499273987161"), "Credit card numbers must contain 16 digits");
+		assertThrows(() -> validator.validate(""), "Credit card numbers must contain 11 digits");
+		assertThrows(() -> validator.validate("1"), "Credit card numbers must contain 11 digits");
+		assertThrows(() -> validator.validate("x"), "Credit card numbers must contain 11 digits");
+		assertThrows(() -> validator.validate("499273987161"), "Credit card numbers must contain 11 digits");
 	}
 
 	private <V> void assertThrows(Callable<V> function, String expectedMessage) throws Exception {
