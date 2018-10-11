@@ -8,7 +8,7 @@ class LuhnsAlgorithmCreditCardValidator extends CreditCardNumberValidator {
 
   def validate(number: String): Either[ValidationError, Boolean] = {
     for {
-      candidate <- Try(number.toLong).toEither.left.map(toError)
+      candidate <- toLong(number)
       doubled   <- Right(reverseAndDoubleEverySecondDigit(candidate))
       sum       <- Right(sumOfDigits(doubled))
     } yield isDivisibleByTenExactly(sum)
@@ -36,6 +36,11 @@ object LuhnsAlgorithmCreditCardValidator {
 
   def isDivisibleByTenExactly(dividend: Int) = {
     if (dividend < 0) false else dividend % 10 == 0
+  }
+
+  private def toLong(number: String) = {
+    if (number.length != 11) Left(ValidationError("Credit card numbers must contain 11 digits"))
+    else Try(number.toLong).toEither.left.map(toError)
   }
 
   private val toError: Throwable => ValidationError = {

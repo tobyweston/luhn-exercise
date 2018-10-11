@@ -1,6 +1,7 @@
 package exercise.luhn
 
 import exercise.luhn.LuhnsAlgorithmCreditCardValidator.{isDivisibleByTenExactly, reverseAndDoubleEverySecondDigit, separateDigits, sumOfDigits}
+import exercise.luhn.LuhnsAlgorithmCreditCardValidatorTest._
 import org.hamcrest.CoreMatchers.is
 import org.junit.Assert.assertThat
 import org.junit.Test
@@ -49,24 +50,34 @@ class LuhnsAlgorithmCreditCardValidatorTest {
     assertThat(isDivisibleByTenExactly(-1), is(false))
   }
 
-  @Test def validCreditCardNumbersCanBeVerified(): Unit = {
+  @Test def validCreditCardNumbersCanBeVerified() = {
     val validator = new LuhnsAlgorithmCreditCardValidator
     assertThat(validator.validate("49927398716"), is(toRight[ValidationError](true)))
     assertThat(validator.validate("79927398713"), is(toRight[ValidationError](true)))
   }
 
-  @Test def invalidCardNumbers(): Unit = {
+  @Test def invalidCardNumbers() = {
     val validator = new LuhnsAlgorithmCreditCardValidator
     assertThat(validator.validate("49927398711"), is(toRight[ValidationError](false)))
     assertThat(validator.validate("79927398711"), is(toRight[ValidationError](false)))
   }
 
-  @Test def creditCardNumbersContainingNonNumerics(): Unit = {
+  @Test def creditCardNumbersContainingNonNumerics() = {
     val validator = new LuhnsAlgorithmCreditCardValidator
     assertThat(validator.validate("4992739871x"), is(toLeft[Boolean](ValidationError("Credit card numbers must contain only numbers"))))
   }
 
+  @Test
+  def creditCardNumbersAreIncorrectLength() = {
+    val validator = new LuhnsAlgorithmCreditCardValidator
+    assertThat(validator.validate(""), is(toLeft[Boolean](ValidationError("Credit card numbers must contain 11 digits"))))
+    assertThat(validator.validate("1"), is(toLeft[Boolean](ValidationError("Credit card numbers must contain 11 digits"))))
+    assertThat(validator.validate("x"), is(toLeft[Boolean](ValidationError("Credit card numbers must contain 11 digits"))))
+    assertThat(validator.validate("499273987161"), is(toLeft[Boolean](ValidationError("Credit card numbers must contain 11 digits"))))
+  }
+}
 
+object LuhnsAlgorithmCreditCardValidatorTest {
   def toRight[A](boolean: Boolean): Either[A, Boolean] = Right(boolean)
   def toLeft[B](error: ValidationError): Either[ValidationError, B] = Left(error)
 }
