@@ -26,4 +26,9 @@ object LuhnsAlgorithmCreditCardValidator {
     if (digits.isEmpty) 0 else separateDigits(digits.mkString.toLong).sum
   }
 
+  def isDivisibleByTenExactly(dividend: Int) = {
+    if (dividend < 0) false else dividend % 10 == 0
+
+  }
+
 }
