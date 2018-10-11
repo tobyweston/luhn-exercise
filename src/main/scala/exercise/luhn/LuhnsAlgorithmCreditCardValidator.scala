@@ -21,10 +21,12 @@ object LuhnsAlgorithmCreditCardValidator {
       .reverse
       .zipWithIndex
       .map {
-        case (value, index) if index % 2 == 0 => value
-        case (value, _)                       => value * 2
+        case (value, index) if isEven(index) => value
+        case (value, _)                      => value * 2
       }
   }
+
+  private def isEven(index: Int) = index % 2 == 0
 
   def separateDigits(number: Long): List[Int] = {
     number.toString.map(_.asDigit).toList
