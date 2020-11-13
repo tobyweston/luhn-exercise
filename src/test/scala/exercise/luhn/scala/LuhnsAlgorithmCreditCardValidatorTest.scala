@@ -1,7 +1,7 @@
-package exercise.luhn
+package exercise.luhn.scala
 
-import exercise.luhn.LuhnsAlgorithmCreditCardValidator.{isDivisibleByTenExactly, reverseAndDoubleEverySecondDigit, separateDigits, sumOfDigits}
-import exercise.luhn.LuhnsAlgorithmCreditCardValidatorTest._
+import exercise.luhn.scala.LuhnsAlgorithmCreditCardValidator._
+import exercise.luhn.scala.LuhnsAlgorithmCreditCardValidatorTest.{toLeft, toRight}
 import org.hamcrest.CoreMatchers.is
 import org.junit.Assert.assertThat
 import org.junit.Test

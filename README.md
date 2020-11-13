@@ -46,14 +46,6 @@ The code that you produce will be reviewed by a number of senior (seasoned) engi
 ## Approach
 This repository contains a skeletal solution including an interface, exception and empty test class which you may use if you wish.  If you prefer not to use Java, that's fine: any programming / scripting language is acceptable.  If you are not familiar with any programming / scripting language then please use pseudo-code.
 
-## How to submit
-To submit your solution, please:
-1. create a fork this repository
-1. make changes as you see fit then commit and push those changes to your fork
-1. grant read access for your fork to the `***REMOVED*** Code Reviewers` group
-1. email the URL of your fork along with any preamble you desire, and an indication of the time you spent on it, to `***REMOVED***`
-
-Note: you should spend no more than a couple of hours on this effort.
 
 ## Importing into your IDE
 We are assuming that you will not have Gradle installed so this repository uses gradle wrapper scripts.  If you wish to
@@ -64,12 +56,3 @@ please feel free to install Gradle locally.
 1. From IntelliJ "open" the project using the `build.gradle` file
 1. Select to use the gradle wrapper and auto create folder, etc.
 1. Once opened, start with a test
-
-### Setting up Artifactory credentials
-1. go to your `$GRADLE_USER_HOME` and create a file called `gradle.properties`
-1. generate an API Key from [Artifactory](***REMOVED***)
-    - click on your name (top right) and verify yourself
-    - click on generate icon next to the API key section
-1. add two entries to `gradle.properties`:
-    - `artifactoryUsername=<your db email address>`
-    - `artifactoryPassword=<API key from Artifactory>`

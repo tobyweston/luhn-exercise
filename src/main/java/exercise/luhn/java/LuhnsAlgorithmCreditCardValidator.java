@@ -1,10 +1,10 @@
-package exercise.luhn;
+package exercise.luhn.java;
 
 
 import java.util.List;
 import java.util.stream.IntStream;
 
-import static exercise.luhn.LuhnsAlgorithmCreditCardValidator.Functions.*;
+import static exercise.luhn.java.LuhnsAlgorithmCreditCardValidator.Functions.*;
 import static java.util.Collections.reverse;
 import static java.util.stream.Collectors.toList;
 

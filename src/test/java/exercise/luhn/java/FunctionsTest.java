@@ -1,8 +1,8 @@
-package exercise.luhn;
+package exercise.luhn.java;
 
 import org.junit.Test;
 
-import static exercise.luhn.LuhnsAlgorithmCreditCardValidator.Functions.*;
+import static exercise.luhn.java.LuhnsAlgorithmCreditCardValidator.Functions.*;
 import static java.util.Arrays.asList;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;

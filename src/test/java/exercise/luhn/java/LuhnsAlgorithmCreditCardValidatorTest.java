@@ -1,4 +1,4 @@
-package exercise.luhn;
+package exercise.luhn.java;
 
 import org.junit.Rule;
 import org.junit.Test;

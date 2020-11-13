@@ -1,6 +1,6 @@
-package exercise.luhn
+package exercise.luhn.scala
 
-import exercise.luhn.LuhnsAlgorithmCreditCardValidator._
+import exercise.luhn.scala.LuhnsAlgorithmCreditCardValidator._
 
 import scala.util.Try
 

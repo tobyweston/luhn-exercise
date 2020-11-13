@@ -1,4 +1,4 @@
-package exercise.luhn;
+package exercise.luhn.java;
 
 public class CreditCardNumberValidationException extends Exception {
 

@@ -1,4 +1,4 @@
-package exercise.luhn
+package exercise.luhn.scala
 
 trait CreditCardNumberValidator {
   def validate(number: String): Either[ValidationError, Boolean]
