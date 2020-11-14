@@ -4,6 +4,8 @@ apply plugin: 'scala'
 
 version = '1.0.0'
 group = 'exercise.luhn'
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
 
 repositories {
     mavenCentral()
