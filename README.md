@@ -11,7 +11,7 @@ A couple of additional descriptions are avilable at [Wikipedia](https://en.wikip
 The formula verifies a number against its included check-digit, which is usually appended to a partial account number to generate the full account number. This account number must pass the following test:
 
 1. Counting from the check digit, which is the rightmost, and moving left, double the value of every second digit.
-2. Sum the _individual_ digits of the products together with the un-doubled digits from the original number.
+2. Sum the _individual_ digits of the [products](https://simple.wikipedia.org/wiki/Product_%28mathematics%29) together with the un-doubled digits from the original number (inc check digit).
 3. If the total ends in 0 (put another way, if the total modulo 10 is congruent to 0), then the number is valid
 according to the Luhn formula; else it is not valid.
 
@@ -26,23 +26,18 @@ As an illustration, if the account number is 49927398716, it will be validated a
     double every 2nd :     18     4     6    16     2      
     ```
     
-2. Sum all products from Step 1 (treating any double figure products as individual digits):  
+2. Sum all products from Step 1 (treating any double figure products as individual digits) with the un-doubled digits (inc check digit):  
 
     ```
     account number   :   4  9  9  2  7  3  9  8  7  1  6 
     products         :     18     4     6    16     2      
     add >10s         :      9                 7     2      
-    digits to sum    :   4  9  9  4  7  6  9  7  7  2
+    digits to sum    :   4  9  9  4  7  6  9  7  7  2  6
     ```
 
-   _NB. This step can be combined with the next._
-
-3. Add to the sum of the remaining digits (inc check digit):
-
-    ```
-    digits to sum    :   4  9  9  4  7  6  9  7  7  2  6      
-    ```
-    `6 + (2) + 7 + (1 + 6) + 9 + (6) + 7 + (4) + 9 + (1 + 8) + 4 = 70`
+    Example below (number in parenthesis are the products)
+     
+    `4 + (1 + 8) + 9 + (4) + 7 + (6) + 9 + (1 + 6) + 7 + (2) + 6 = 70`
     
 4. Take the sum modulo 10: `70 mod 10 = 0`; the account number is **valid**.
 
